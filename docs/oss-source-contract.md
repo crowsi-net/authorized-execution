@@ -43,3 +43,37 @@ Use the package scripts/owner CI above and the repository README for exact comma
 ## Acceptance record
 
 Inventory baseline source: `1f30eeb10047dcaea807e38ab786f4a3ffcede7c`. This baseline records observed files and declared interfaces, not a completed audit. Subsequent source changes are accepted at their exact commit with test evidence. Production hosting, account login, secret custody installation and data migration remain outside source-only acceptance.
+
+## Owned source and acceptance map
+
+[oss-source-map.json](oss-source-map.json) is the tracked map of package
+interfaces, declared commands, schemas, functional test sources, examples and CI
+jobs. It keeps each responsibility attached to its actual physical source owner.
+Public exports are supported only within this repository's responsibility boundary;
+a filename or schema declaration does not grant product or cloud authority.
+
+| Package | Canonical manifest | Responsibility/interface |
+| --- | --- | --- |
+| `crowsi-certificate-manager` | [crates/crowsi-certificate-manager/Cargo.toml](../crates/crowsi-certificate-manager/Cargo.toml) | Fail-closed certificate lifecycle boundary for authenticated Crowsi workloads |
+| `crowsi-control-contracts` | [crates/crowsi-control-contracts/Cargo.toml](../crates/crowsi-control-contracts/Cargo.toml) | Closed Zero Trust control contracts for Crowsi |
+| `crowsi-enforcement-point` | [crates/crowsi-enforcement-point/Cargo.toml](../crates/crowsi-enforcement-point/Cargo.toml) | Fail-closed provider enforcement boundary for Crowsi |
+| `crowsi-independent-verifier` | [crates/crowsi-independent-verifier/Cargo.toml](../crates/crowsi-independent-verifier/Cargo.toml) | Independent signed read-back and intrusion evidence verifier for Crowsi |
+| `crowsi-key-provider` | [crates/crowsi-key-provider/Cargo.toml](../crates/crowsi-key-provider/Cargo.toml) | Hardware-backed signing boundary contracts for Crowsi |
+| `crowsi-local-control-bridge` | [crates/crowsi-local-control-bridge/Cargo.toml](../crates/crowsi-local-control-bridge/Cargo.toml) | Authenticated Unix IPC boundary for local Crowsi control |
+| `crowsi-pa-pep-transport` | [crates/crowsi-pa-pep-transport/Cargo.toml](../crates/crowsi-pa-pep-transport/Cargo.toml) | Versioned local PA-to-PEP composition boundary for Crowsi |
+| `crowsi-policy-administrator` | [crates/crowsi-policy-administrator/Cargo.toml](../crates/crowsi-policy-administrator/Cargo.toml) | Signed authorization verification and durable one-use enforcement ledger for Crowsi |
+| `crowsi-policy-engine` | [crates/crowsi-policy-engine/Cargo.toml](../crates/crowsi-policy-engine/Cargo.toml) | Pure deterministic Zero Trust policy evaluation for Crowsi |
+| `crowsi-rescue-console` | [crates/crowsi-rescue-console/Cargo.toml](../crates/crowsi-rescue-console/Cargo.toml) | Out-of-band containment and separately approved recovery authority |
+
+For source acceptance, run each applicable functional CI job with the committed
+locks from an independent checkout. Match public entrypoints to their test/example
+sources in the map; test the relevant invalid input and failure boundary as well as
+the normal path. Policy-only, skipped and credential-dependent jobs do not establish
+functional coverage. Release jobs establish artifact acceptance only when actually
+run at the reviewed commit. A source-only/example repository must not be presented
+as a complete external service or a released package.
+
+Schema definitions in the map remain owned by their canonical validator and
+consumers. An absent schema file means no separate schema file is declared; it does
+not mean the runtime interface has no validation. Do not introduce another common
+schema solely to mirror an implementation type.
