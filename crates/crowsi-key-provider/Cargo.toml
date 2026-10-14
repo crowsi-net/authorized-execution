@@ -13,7 +13,7 @@ repository = "https://github.com/crowsi-net/authorized-execution"
 
 
 [dependencies]
-base64 = "0.22.1"
+base64 = "0.23.1"
 crowsi-control-contracts = { version = "=0.1.0", path = "../crowsi-control-contracts" }
 getrandom = "0.4.3"
 nix = { version = "0.31.3", features = ["user"] }

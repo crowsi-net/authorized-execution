@@ -16,7 +16,7 @@ independent-observation = true
 
 
 [dependencies]
-base64 = "0.22.1"
+base64 = "0.23.1"
 ed25519-dalek = { version = "3.0.0", features = ["zeroize"] }
 rusqlite = { version = "0.37.0", features = ["bundled"] }
 serde = { version = "1.0.228", features = ["derive"] }

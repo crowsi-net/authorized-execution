@@ -19,7 +19,7 @@ production-adapters = "not-shipped"
 
 
 [dependencies]
-base64 = "0.22.1"
+base64 = "0.23.1"
 crowsi-control-contracts = { version = "=0.1.0", path = "../crowsi-control-contracts" }
 serde = { version = "1.0.228", features = ["derive"] }
 sha2 = "0.10.9"
