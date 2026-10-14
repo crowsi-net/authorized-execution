@@ -13,7 +13,7 @@ repository = "https://github.com/crowsi-net/authorized-execution"
 
 [dependencies]
 crowsi-control-contracts = { version = "=0.1.0", path = "../crowsi-control-contracts" }
-ed25519-dalek = "2.2.0"
+ed25519-dalek = "3.0.0"
 hex = "0.4.3"
 ihat-identity-assertion-contracts = { version = "=0.10.0" }
 nix = { version = "0.31.3", features = ["poll", "socket", "user"] }

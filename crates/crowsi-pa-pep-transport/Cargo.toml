@@ -28,7 +28,7 @@ thiserror = "2.0.18"
 [dev-dependencies]
 base64 = "0.22.1"
 crowsi-policy-engine = { version = "=0.1.0", path = "../crowsi-policy-engine" }
-ed25519-dalek = { version = "2.2.0", features = ["zeroize"] }
+ed25519-dalek = { version = "3.0.0", features = ["zeroize"] }
 
 [lints.rust]
 unsafe_code = "forbid"
