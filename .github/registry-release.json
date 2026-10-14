@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "repository": "crowsi-net/authorized-execution",
+  "defaultBranch": "main",
+  "requiredWorkflows": [
+    "ci.yml"
+  ],
+  "packages": [
+    {
+      "ecosystem": "cargo",
+      "manifest": "crates/crowsi-control-contracts/Cargo.toml",
+      "name": "crowsi-control-contracts",
+      "installDirectory": "."
+    },
+    {
+      "ecosystem": "cargo",
+      "manifest": "crates/crowsi-local-control-bridge/Cargo.toml",
+      "name": "crowsi-local-control-bridge",
+      "installDirectory": "."
+    }
+  ]
+}
