@@ -12,7 +12,7 @@ repository = "https://github.com/crowsi-net/authorized-execution"
 
 
 [dependencies]
-base64 = "0.22.1"
+base64 = "0.23.1"
 crowsi-control-contracts = { version = "=0.1.0", path = "../crowsi-control-contracts" }
 crowsi-independent-verifier = { version = "=0.1.0", path = "../crowsi-independent-verifier" }
 ed25519-dalek = "3.0.0"
