@@ -31,4 +31,4 @@ cargo test --locked -p crowsi-policy-engine
 
 ## Product responsibility
 
-This component is maintained in [vpremises/vpremises-control](https://github.com/vpremises/vpremises-control). Use the [product README](../../README.md) for composition, use cases and trust boundaries.
+This component is maintained in [crowsi-net/authorized-execution](https://github.com/crowsi-net/authorized-execution). Use the [repository README](../../README.md) for composition, use cases and trust boundaries.
