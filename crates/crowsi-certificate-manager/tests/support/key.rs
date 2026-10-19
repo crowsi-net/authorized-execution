@@ -18,7 +18,7 @@ impl KeyEnrollmentVerifierPort for EnrollmentVerifier {
 pub fn enrollment() -> VerifiedKeyEnrollmentV2 {
     let public_key_spki_der = b"public-spki-ed25519".to_vec();
     VerifiedKeyEnrollmentV2 {
-        public_key_sha256: format!("{:x}", Sha256::digest(&public_key_spki_der)),
+        public_key_sha256: hex::encode(Sha256::digest(&public_key_spki_der)),
         public_key_spki_der,
         algorithm: "ed25519".into(),
         proof_of_possession_verified: true,

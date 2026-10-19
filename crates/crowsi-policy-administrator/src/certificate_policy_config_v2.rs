@@ -92,7 +92,7 @@ fn valid_signer_key(value: &CertificateAdministratorPolicyV2) -> bool {
     let Ok(key) = VerifyingKey::from_bytes(&bytes) else {
         return false;
     };
-    let digest = format!("{:x}", Sha256::digest(bytes));
+    let digest = hex::encode(Sha256::digest(bytes));
     let spki_digest = ed25519_spki_digest(&bytes);
     !key.is_weak()
         && URL_SAFE_NO_PAD.encode(bytes) == value.authorization_signer_public_key_base64
@@ -107,7 +107,7 @@ fn ed25519_spki_digest(key: &[u8; 32]) -> String {
     let mut der = Vec::with_capacity(PREFIX.len() + key.len());
     der.extend_from_slice(&PREFIX);
     der.extend_from_slice(key);
-    format!("{:x}", Sha256::digest(der))
+    hex::encode(Sha256::digest(der))
 }
 
 pub(crate) fn revalidate_freshness(

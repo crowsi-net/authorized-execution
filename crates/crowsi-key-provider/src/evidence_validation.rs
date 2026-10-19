@@ -8,7 +8,7 @@ pub(crate) fn evidence_digest_matches(encoded: &str, expected: &str) -> bool {
     let Some(decoded) = decoded_canonical(encoded, 16, 16_384) else {
         return false;
     };
-    format!("{:x}", Sha256::digest(decoded)) == expected
+    hex::encode(Sha256::digest(decoded)) == expected
 }
 
 pub(crate) fn canonical_base64(value: &str, minimum: usize, maximum: usize) -> bool {

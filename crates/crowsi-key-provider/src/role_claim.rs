@@ -40,5 +40,5 @@ pub(crate) fn digest(value: &HardwareRoleClaim) -> String {
         hash.update(u64::try_from(field.len()).unwrap_or(u64::MAX).to_be_bytes());
         hash.update(field.as_bytes());
     }
-    format!("{:x}", hash.finalize())
+    hex::encode(hash.finalize())
 }

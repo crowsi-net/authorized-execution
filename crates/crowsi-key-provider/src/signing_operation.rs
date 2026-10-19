@@ -61,7 +61,7 @@ pub(crate) fn request_binding(policy: &KeyPolicy, request: &SigningRequestV1) ->
     hash.update(request.expires_at_epoch_s.to_be_bytes());
     hash.update(policy.attestation_trust_revision.to_be_bytes());
     hash.update(policy.max_recovery_ttl_seconds.to_be_bytes());
-    format!("{:x}", hash.finalize())
+    hex::encode(hash.finalize())
 }
 
 pub(crate) fn operation_id(ledger_instance_id: &str, request_binding: &str) -> String {
@@ -74,5 +74,5 @@ pub(crate) fn operation_id(ledger_instance_id: &str, request_binding: &str) -> S
         hash.update(u64::try_from(value.len()).unwrap_or(u64::MAX).to_be_bytes());
         hash.update(value.as_bytes());
     }
-    format!("hardware-operation:{:x}", hash.finalize())
+    format!("hardware-operation:{}", hex::encode(hash.finalize()))
 }

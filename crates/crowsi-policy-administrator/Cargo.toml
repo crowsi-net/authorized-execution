@@ -17,6 +17,7 @@ provider-enforcer = "not-shipped"
 
 
 [dependencies]
+hex = "0.4.3"
 base64 = "0.23.1"
 crowsi-control-contracts = { version = "=0.1.0", path = "../crowsi-control-contracts" }
 crowsi-policy-engine = { version = "=0.1.0", path = "../crowsi-policy-engine" }
@@ -25,7 +26,7 @@ p256 = { version = "0.13.2", features = ["ecdsa"] }
 rusqlite = { version = "0.37.0", features = ["bundled"] }
 serde = "1.0.228"
 serde_json = "1.0.149"
-sha2 = "0.10.9"
+sha2 = "0.11.1"
 thiserror = "2.0.18"
 time = { version = "0.3.54", features = ["macros", "parsing"] }
 

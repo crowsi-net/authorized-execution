@@ -75,7 +75,7 @@ fn outcome(status: AdapterStatus) -> EnforcementOutcome {
 
 fn evidence_digest(value: &AdapterOutcome) -> Result<String> {
     let encoded = serde_json::to_vec(value)?;
-    Ok(format!("sha256:{:x}", Sha256::digest(encoded)))
+    Ok(format!("sha256:{}", hex::encode(Sha256::digest(encoded))))
 }
 
 fn unsigned() -> SignedDigestV1 {

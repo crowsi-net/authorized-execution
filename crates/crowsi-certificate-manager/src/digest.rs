@@ -37,10 +37,10 @@ impl DigestBuilder {
     }
 
     pub(crate) fn finish(self) -> String {
-        format!("{:x}", self.0.finalize())
+        hex::encode(self.0.finalize())
     }
 }
 
 pub(crate) fn sha256(value: &[u8]) -> String {
-    format!("{:x}", Sha256::digest(value))
+    hex::encode(Sha256::digest(value))
 }

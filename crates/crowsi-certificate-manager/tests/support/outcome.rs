@@ -10,7 +10,7 @@ pub fn outcome(command: &AuthorityCommandV2, executed_at_epoch_s: u64) -> Author
         CertificateOperation::Issue | CertificateOperation::Renew => CertificateMetadataV2 {
             certificate_id: "certificate.issued.0001".into(),
             serial_number: "a10001".into(),
-            fingerprint_sha256: format!("{:x}", Sha256::digest(b"public-certificate")),
+            fingerprint_sha256: hex::encode(Sha256::digest(b"public-certificate")),
             public_key_sha256: command
                 .public_key_sha256
                 .clone()

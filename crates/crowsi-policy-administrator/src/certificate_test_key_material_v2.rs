@@ -9,5 +9,5 @@ pub(crate) fn spki_digest(seed: u8) -> String {
         0x2a, 0x86, 0x48, 0xce, 0x3d, 0x03, 0x01, 0x07, 0x03, 0x42, 0x00,
     ];
     spki.extend_from_slice(point.as_bytes());
-    format!("{:x}", Sha256::digest(spki))
+    hex::encode(Sha256::digest(spki))
 }
