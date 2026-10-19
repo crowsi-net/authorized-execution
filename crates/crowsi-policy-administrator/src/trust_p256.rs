@@ -139,5 +139,5 @@ fn spki_digest(sec1: &[u8]) -> String {
     let mut der = Vec::with_capacity(PREFIX.len() + sec1.len());
     der.extend_from_slice(&PREFIX);
     der.extend_from_slice(sec1);
-    format!("{:x}", Sha256::digest(der))
+    hex::encode(Sha256::digest(der))
 }

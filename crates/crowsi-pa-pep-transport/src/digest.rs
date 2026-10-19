@@ -6,5 +6,5 @@ pub(crate) fn evidence(context: &str, material: &[u8]) -> String {
     hasher.update(context.as_bytes());
     hasher.update([0]);
     hasher.update(material);
-    format!("sha256:{:x}", hasher.finalize())
+    format!("sha256:{}", hex::encode(hasher.finalize()))
 }

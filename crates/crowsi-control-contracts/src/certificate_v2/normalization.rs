@@ -21,5 +21,5 @@ pub fn certificate_target_normalization_digest_v2(
     ] {
         payload.text(value);
     }
-    format!("{:x}", Sha256::digest(payload.finish()))
+    hex::encode(Sha256::digest(payload.finish()))
 }

@@ -7,7 +7,7 @@ pub trait CertificatePayloadV2 {
 
     #[must_use]
     fn certificate_digest_sha256(&self) -> String {
-        format!("{:x}", Sha256::digest(self.certificate_signing_payload()))
+        hex::encode(Sha256::digest(self.certificate_signing_payload()))
     }
 }
 

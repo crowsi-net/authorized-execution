@@ -92,7 +92,7 @@ impl AttestationChallenge {
         hash.update(self.trust_revision.to_be_bytes());
         hash.update(self.issued_at_epoch_s.to_be_bytes());
         hash.update(self.expires_at_epoch_s.to_be_bytes());
-        format!("{:x}", hash.finalize())
+        hex::encode(hash.finalize())
     }
 }
 

@@ -55,5 +55,8 @@ fn path_replacement_cannot_change_the_running_executable_digest() {
     fs::write(&executable, b"replacement image").expect("replace path");
     let digest = super::executable_digest(child.0.id()).expect("running inode digest");
 
-    assert_eq!(digest, format!("sha256:{:x}", Sha256::digest(original)));
+    assert_eq!(
+        digest,
+        format!("sha256:{}", hex::encode(Sha256::digest(original)))
+    );
 }

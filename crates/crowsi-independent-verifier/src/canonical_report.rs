@@ -51,7 +51,7 @@ fn bytes(value: &SignedReadbackReportV1) -> Vec<u8> {
 
 fn digest(value: &SignedReadbackReportV1) -> String {
     let hash = Sha256::digest(bytes(value));
-    format!("sha256:{hash:x}")
+    format!("sha256:{}", hex::encode(hash))
 }
 
 fn push(output: &mut Vec<u8>, value: &[u8]) {
