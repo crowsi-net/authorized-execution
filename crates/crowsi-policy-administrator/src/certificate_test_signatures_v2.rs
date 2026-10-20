@@ -104,7 +104,7 @@ fn receipt_signature<T: CertificatePayloadV2>(
     let signature: P256Signature = signing
         .sign_prehash(&bare_digest_bytes(&digest).unwrap())
         .unwrap();
-    let signature = signature.normalize_s().unwrap_or(signature);
+    let signature = signature.normalize_s();
     CertificateReceiptSignatureV2 {
         key_id: key.0.into(),
         key_version: "version.0001".into(),

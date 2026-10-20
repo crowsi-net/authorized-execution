@@ -83,7 +83,7 @@ fn consume_fence(transaction: &Transaction<'_>, request: &ProviderRequest) -> Re
         .execute(
             "UPDATE provider_resources SET latest_fence = ?1
              WHERE resource_uri = ?2 AND latest_fence < ?1",
-            params![request.fence, request.resource_uri],
+            params![super::codec::fence(request.fence)?, request.resource_uri],
         )
         .map_err(PepError::from)
 }
@@ -107,7 +107,7 @@ fn mutate(
                 request.deployment_id,
                 request.provider,
                 request.expected_resource_version,
-                request.fence
+                super::codec::fence(request.fence)?
             ],
         )
         .map_err(PepError::from)

@@ -28,3 +28,8 @@ pub(crate) fn state(value: &str) -> Option<ResourceState> {
         _ => None,
     }
 }
+
+/// Encode a signed database integer without wrapping an unsigned fence.
+pub(crate) fn fence(value: u64) -> crate::Result<i64> {
+    i64::try_from(value).map_err(|_| crate::PepError::Validation("provider fence".into()))
+}

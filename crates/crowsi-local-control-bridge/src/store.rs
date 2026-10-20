@@ -1,3 +1,5 @@
+mod counters;
+use counters::{counter, sql_counter};
 use std::path::Path;
 
 use rusqlite::{Connection, params};

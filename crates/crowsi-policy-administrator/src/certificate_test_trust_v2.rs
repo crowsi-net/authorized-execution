@@ -110,7 +110,7 @@ fn insert_p256(
         purpose,
         role,
         scope,
-        sec1: signing.verifying_key().to_encoded_point(false).as_bytes(),
+        sec1: signing.verifying_key().to_sec1_point(false).as_bytes(),
     })
     .unwrap();
 }

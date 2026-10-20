@@ -9,6 +9,7 @@ mod attempt;
 mod attempt_decode;
 mod attempt_write;
 mod binding;
+pub(crate) mod counters;
 
 /// Durable one-attempt ledger used before a hardware key operation.
 pub struct SqliteReplayLedger {

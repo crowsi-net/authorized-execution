@@ -81,7 +81,7 @@ impl SqliteProvider {
                 record.provider,
                 super::codec::kind_code(record.kind),
                 record.resource_version,
-                record.latest_fence,
+                super::codec::fence(record.latest_fence)?,
                 record.state.code()
             ],
         )?;
@@ -119,7 +119,7 @@ pub(crate) fn resource(connection: &Connection, uri: &str) -> Result<Option<Reso
                     row.get::<_, String>(2)?,
                     row.get::<_, String>(3)?,
                     row.get::<_, String>(4)?,
-                    row.get::<_, u64>(5)?,
+                    row.get::<_, i64>(5)?,
                     row.get::<_, String>(6)?,
                 ))
             },
@@ -134,7 +134,7 @@ pub(crate) fn resource(connection: &Connection, uri: &str) -> Result<Option<Reso
                 provider,
                 kind: super::codec::kind(&kind).ok_or(PepError::LedgerIntegrity)?,
                 resource_version: version,
-                latest_fence: fence,
+                latest_fence: u64::try_from(fence).map_err(|_| PepError::LedgerIntegrity)?,
                 state: super::codec::state(&state).ok_or(PepError::LedgerIntegrity)?,
             })
         },

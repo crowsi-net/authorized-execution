@@ -73,7 +73,7 @@ fn raise_epoch(
     transaction.execute(
         "INSERT INTO revocation_watermarks(scope,binding,epoch) VALUES(?1,?2,?3)
          ON CONFLICT(scope,binding) DO UPDATE SET epoch=max(epoch,excluded.epoch)",
-        params![scope, key, epoch],
+        params![scope, key, super::sql_counter(epoch)?],
     )?;
     Ok(())
 }
@@ -87,7 +87,7 @@ fn current_epoch(
         .query_row(
             "SELECT epoch FROM revocation_watermarks WHERE scope=?1 AND binding=?2",
             params![scope, key],
-            |row| row.get(0),
+            |row| super::counter(row, 0),
         )
         .or_else(|error| match error {
             rusqlite::Error::QueryReturnedNoRows => Ok(0),
