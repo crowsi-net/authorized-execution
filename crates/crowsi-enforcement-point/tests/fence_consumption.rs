@@ -88,3 +88,26 @@ fn sqlite_provider_keeps_the_consumed_fence_across_restart() {
     assert_eq!(stale.outcome, EnforcementOutcome::Rejected);
     assert!(stale.residual_exposures.contains(&"stale-fence".into()));
 }
+
+#[test]
+fn sqlite_fence_roundtrips_the_largest_signed_integer_and_refuses_overflow() {
+    let directory = tempfile::tempdir().unwrap();
+    let path = directory.path().join("fence-bounds.sqlite3");
+    let provider = SqliteProvider::open_for_test(&path).unwrap();
+    let mut maximum = resource();
+    maximum.latest_fence = u64::try_from(i64::MAX).unwrap();
+    provider.register(&maximum).unwrap();
+    assert_eq!(
+        provider
+            .snapshot(&maximum.resource_uri)
+            .unwrap()
+            .unwrap()
+            .latest_fence,
+        maximum.latest_fence
+    );
+    let mut overflow = resource();
+    overflow.resource_uri.push_str("/overflow");
+    overflow.latest_fence = maximum.latest_fence + 1;
+    assert!(provider.register(&overflow).is_err());
+    assert!(provider.snapshot(&overflow.resource_uri).unwrap().is_none());
+}

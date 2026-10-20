@@ -47,7 +47,7 @@ pub(super) fn records(connection: &Connection) -> Result<Vec<AuditRecord>, Bridg
     )?;
     let rows = query.query_map([], |row| {
         Ok(AuditRecord {
-            sequence: row.get(0)?,
+            sequence: super::counter(row, 0)?,
             request_id: row.get(1)?,
             action: parse_action(&row.get::<_, String>(2)?),
             resource_digest: row.get(3)?,

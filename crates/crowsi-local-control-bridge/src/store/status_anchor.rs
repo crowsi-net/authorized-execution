@@ -28,11 +28,11 @@ pub(super) fn apply(
         params![
             binding,
             sha256_digest(status.session_ref.as_bytes()),
-            status.device_posture.revision,
-            status.revocation_epochs.subject,
-            status.revocation_epochs.service,
-            status.revocation_epochs.device,
-            status.revocation_epochs.session,
+            super::sql_counter(status.device_posture.revision)?,
+            super::sql_counter(status.revocation_epochs.subject)?,
+            super::sql_counter(status.revocation_epochs.service)?,
+            super::sql_counter(status.revocation_epochs.device)?,
+            super::sql_counter(status.revocation_epochs.session)?,
             issued_at,
             expires_at,
         ],
@@ -64,11 +64,11 @@ pub(super) fn authorize(
             |row| {
                 Ok((
                     row.get::<_, String>(0)?,
-                    row.get::<_, u64>(1)?,
-                    row.get::<_, u64>(2)?,
-                    row.get::<_, u64>(3)?,
-                    row.get::<_, u64>(4)?,
-                    row.get::<_, u64>(5)?,
+                    super::counter(row, 1)?,
+                    super::counter(row, 2)?,
+                    super::counter(row, 3)?,
+                    super::counter(row, 4)?,
+                    super::counter(row, 5)?,
                     row.get::<_, i64>(6)?,
                 ))
             },

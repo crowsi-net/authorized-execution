@@ -107,7 +107,9 @@ fn lifecycle_epoch(administrator: &crate::CertificatePolicyAdministratorV2) -> u
             "SELECT epoch FROM certificate_v2_lifecycle_epochs
               WHERE target_resource_id = 'resource.certificate.nerp.worker'",
             [],
-            |row| row.get(0),
+            |row| row.get::<_, i64>(0),
         )
+        .unwrap()
+        .try_into()
         .unwrap()
 }

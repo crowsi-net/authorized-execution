@@ -37,7 +37,7 @@ pub(crate) fn bind(
                     ProviderLedgerBinding {
                         ledger_instance_id: row.get(1)?,
                         role_manifest_digest_sha256: row.get(2)?,
-                        hardware_fence: row.get(3)?,
+                        hardware_fence: crate::sqlite_ledger::counters::read(row, 3)?,
                     },
                 ))
             },

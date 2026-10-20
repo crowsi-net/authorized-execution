@@ -15,7 +15,7 @@ impl ProviderBindingJournal for SqliteReplayLedger {
                     Ok(ProviderLedgerBinding {
                         ledger_instance_id: row.get(0)?,
                         role_manifest_digest_sha256: row.get(1)?,
-                        hardware_fence: row.get(2)?,
+                        hardware_fence: super::counters::read(row, 2)?,
                     })
                 },
             )
@@ -35,7 +35,10 @@ impl ProviderBindingJournal for SqliteReplayLedger {
             .execute(
                 "UPDATE ledger_binding SET hardware_fence=?1
                  WHERE singleton=1 AND hardware_fence=?2",
-                params![current, expected],
+                params![
+                    super::counters::encode(current)?,
+                    super::counters::encode(expected)?
+                ],
             )
             .map_err(|_| KeyError::LedgerUnavailable)?;
         if changed == 1 {

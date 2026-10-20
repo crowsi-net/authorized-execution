@@ -39,12 +39,12 @@ impl TrustedKeys {
     pub fn insert_p256_sec1(&mut self, anchor: P256TrustAnchorV2<'_>) -> Result<()> {
         let key =
             VerifyingKey::from_sec1_bytes(anchor.sec1).map_err(|_| AdministratorError::Trust)?;
-        let canonical = key.to_encoded_point(false);
+        let canonical = key.to_sec1_point(false);
         let digest = spki_digest(canonical.as_bytes());
         let duplicate = self
             .p256
             .values()
-            .any(|item| item.key.to_encoded_point(false).as_bytes() == canonical.as_bytes());
+            .any(|item| item.key.to_sec1_point(false).as_bytes() == canonical.as_bytes());
         let valid = valid_key_id(anchor.key_id)
             && (8..=160).contains(&anchor.key_version.len())
             && !anchor.purpose.is_empty()
@@ -121,7 +121,7 @@ impl TrustedKeys {
             return Err(AdministratorError::Signature);
         }
         let signature = Signature::from_slice(&bytes).map_err(|_| AdministratorError::Signature)?;
-        if signature.normalize_s().is_some() {
+        if signature.normalize_s() != signature {
             return Err(AdministratorError::Signature);
         }
         trusted

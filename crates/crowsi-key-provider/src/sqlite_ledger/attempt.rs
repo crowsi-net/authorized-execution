@@ -45,11 +45,11 @@ impl SigningAttemptJournal for SqliteReplayLedger {
                     operation.purpose.as_str(),
                     operation.algorithm.as_str(),
                     operation.digest_sha256,
-                    operation.request_issued_at_epoch_s,
-                    operation.request_expires_at_epoch_s,
-                    operation.recovery_deadline_epoch_s,
-                    operation.previous_hardware_fence,
-                    operation.hardware_fence,
+                    super::counters::encode(operation.request_issued_at_epoch_s)?,
+                    super::counters::encode(operation.request_expires_at_epoch_s)?,
+                    super::counters::encode(operation.recovery_deadline_epoch_s)?,
+                    super::counters::encode(operation.previous_hardware_fence)?,
+                    super::counters::encode(operation.hardware_fence)?,
                 ],
             )
             .map_err(|_| KeyError::LedgerUnavailable)?;
