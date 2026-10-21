@@ -21,7 +21,7 @@ fn exact_bound_request_is_released_once() {
     assert_eq!(ticket.service_id, "service:crowsi");
     assert_eq!(ticket.pairwise_subject, "pairwise:operator");
     assert_eq!(ticket.device_id, "device:managed");
-    assert_eq!(ticket.workload_id, "spiffe://crowsi/local/coela-control");
+    assert_eq!(ticket.workload_id, "spiffe://crowsi/local/example-console");
     assert_eq!(ticket.actor_profile_id, "profile:security-operator");
     assert_eq!(ticket.device_revocation_epoch, 4);
     assert!(ticket.command_digest.starts_with("sha256:"));

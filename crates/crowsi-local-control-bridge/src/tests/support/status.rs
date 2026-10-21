@@ -16,7 +16,7 @@ pub fn bridge_trust(peer: &PeerAttestation) -> BridgeTrust {
         pa.verifying_key().to_bytes(),
         peer.uid,
         peer.gid,
-        "spiffe://crowsi/local/coela-control",
+        "spiffe://crowsi/local/example-console",
         &peer.executable_sha256,
         identity_status_trust(),
     )

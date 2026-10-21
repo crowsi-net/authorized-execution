@@ -36,7 +36,7 @@ pub fn fixture() -> Fixture {
         uid: 3001,
         gid: 3001,
         process_start_ticks: 77,
-        executable_sha256: sha256_digest(b"coela-control"),
+        executable_sha256: sha256_digest(b"example-console"),
     })
 }
 
@@ -70,7 +70,7 @@ pub fn fixture_for_peer(peer: PeerAttestation) -> Fixture {
         service_revocation_epoch: 2,
         device_revocation_epoch: 4,
         session_revocation_epoch: 3,
-        workload_id: "spiffe://crowsi/local/coela-control".into(),
+        workload_id: "spiffe://crowsi/local/example-console".into(),
         actor_profile_id: "profile:security-operator".into(),
         assurance: "phishing-resistant".into(),
         user_verification: true,

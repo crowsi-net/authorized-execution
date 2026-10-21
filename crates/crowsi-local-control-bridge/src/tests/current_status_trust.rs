@@ -24,7 +24,7 @@ fn pa_key_cannot_be_reused_as_mandatory_identity_status_key() {
             pa.verifying_key().to_bytes(),
             fixture.peer.uid,
             fixture.peer.gid,
-            "spiffe://crowsi/local/coela-control",
+            "spiffe://crowsi/local/example-console",
             &fixture.peer.executable_sha256,
             reused,
         )
