@@ -63,7 +63,7 @@ fn trust_accepts_only_the_shared_closed_spiffe_profile() {
     let key = SigningKey::from_bytes(&[6; 32]).verifying_key().to_bytes();
     let digest = format!("sha256:{}", "a".repeat(64));
     for workload in [
-        "spiffe://crowsi/local/coela-control",
+        "spiffe://crowsi/local/example-console",
         "spiffe://crowsi.example/Team_A/worker.01",
         "spiffe://crowsi/-/_",
     ] {
@@ -81,11 +81,11 @@ fn trust_accepts_only_the_shared_closed_spiffe_profile() {
     }
     for workload in [
         "workload-coela",
-        "SPIFFE://crowsi/local/coela-control",
-        "spiffe://crowsi//coela-control",
+        "SPIFFE://crowsi/local/example-console",
+        "spiffe://crowsi//example-console",
         "spiffe://crowsi/local/../admin",
         "spiffe://crowsi/local/control?role=admin",
-        "spiffe://CROWSI/local/coela-control",
+        "spiffe://CROWSI/local/example-console",
         "spiffe://-crowsi/local/control",
         "spiffe://crowsi/local/~control",
     ] {
