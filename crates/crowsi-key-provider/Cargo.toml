@@ -15,7 +15,7 @@ repository = "https://github.com/crowsi-net/authorized-execution"
 [dependencies]
 hex = "0.4.3"
 base64 = "0.23.1"
-crowsi-control-contracts = { version = "=0.1.0", path = "../crowsi-control-contracts" }
+crowsi-control-contracts = { version = "=0.1.1", path = "../crowsi-control-contracts" }
 getrandom = "0.4.3"
 nix = { version = "0.31.3", features = ["user"] }
 rusqlite = { version = "0.40.2", features = ["bundled"] }
