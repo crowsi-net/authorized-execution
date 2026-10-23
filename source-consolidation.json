@@ -1,0 +1,15 @@
+{
+  "schema": "source-consolidation-v1",
+  "owner_repository": "crowsi-net/authorized-execution",
+  "components": [
+    {
+      "id": "vpremises-control",
+      "original_repository": "vpremises/vpremises-control",
+      "source_head": "c47929891a37a68ca62e9c524243d2faae49dee7",
+      "subpath": ".",
+      "owner_repository": "crowsi-net/authorized-execution",
+      "retired_archive_sha256": "8bd5920d484e1d79c897560fa42227b143ddfe4e171e1e6ae465242c87e08a23"
+    }
+  ],
+  "status": "Current source is maintained only in this owner. Original repository/revision and retired archive digest are provenance only; archive restoration is retired. Current manifests and owner workflows define publication; public availability is verified separately."
+}
