@@ -18,7 +18,7 @@ transport = "local-port-only"
 
 [dependencies]
 hex = "0.4.3"
-crowsi-control-contracts = { version = "=0.1.0", path = "../crowsi-control-contracts" }
+crowsi-control-contracts = { version = "=0.1.1", path = "../crowsi-control-contracts" }
 crowsi-enforcement-point = { version = "=0.1.0", path = "../crowsi-enforcement-point" }
 crowsi-policy-administrator = { version = "=0.1.0", path = "../crowsi-policy-administrator" }
 serde = { version = "1.0.228", features = ["derive"] }

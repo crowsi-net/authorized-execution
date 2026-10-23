@@ -21,7 +21,7 @@ production-adapters = "not-shipped"
 [dependencies]
 hex = "0.4.3"
 base64 = "0.23.1"
-crowsi-control-contracts = { version = "=0.1.0", path = "../crowsi-control-contracts" }
+crowsi-control-contracts = { version = "=0.1.1", path = "../crowsi-control-contracts" }
 serde = { version = "1.0.228", features = ["derive"] }
 sha2 = "0.11.1"
 thiserror = "2.0.18"

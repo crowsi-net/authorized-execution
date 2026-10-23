@@ -3,7 +3,7 @@ categories = ["authentication", "os"]
 keywords = ["authorization", "ipc", "local-first", "security", "rust"]
 exclude = ["/registration/**", "/state/**", "/.local/**", "/.state/**", "/.data/**", "/secrets/**", "/credentials/**", "/.env", "/.env.production", "/.env.local", "/*.tgz", "/*.tar.gz", "/*.tar", "/*.zip", "/*.whl", "/*.crate", "/.ruff_cache/**", "/.mypy_cache/**", "/.tox/**", "/.nox/**", "/.hypothesis/**", "/.coverage", "/.coverage.*", "/htmlcov/**", "/lcov.info", "/junit.xml", "/*.profraw", "/*.profdata", "/*.egg-info/**", "/target/**", "/node_modules/**", "/dist/**", "/build/**", "/.cache/**", "/.pytest_cache/**", "/coverage/**"]
 name = "crowsi-local-control-bridge"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.97"
 description = "Authenticated Unix IPC boundary for local Crowsi control"
@@ -14,10 +14,10 @@ repository = "https://github.com/crowsi-net/authorized-execution"
 
 
 [dependencies]
-crowsi-control-contracts = { version = "=0.1.0", path = "../crowsi-control-contracts" }
+crowsi-control-contracts = { version = "=0.1.1", path = "../crowsi-control-contracts" }
 ed25519-dalek = "3.0.0"
 hex = "0.4.3"
-ihat-identity-assertion-contracts = { version = "=0.10.0" }
+ihat-identity-assertion-contracts = { version = "=0.10.1" }
 nix = { version = "0.31.3", features = ["poll", "socket", "user"] }
 rusqlite = { version = "0.40.2", features = ["bundled"] }
 serde = { version = "1.0.228", features = ["derive"] }

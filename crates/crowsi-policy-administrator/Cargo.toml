@@ -19,7 +19,7 @@ provider-enforcer = "not-shipped"
 [dependencies]
 hex = "0.4.3"
 base64 = "0.23.1"
-crowsi-control-contracts = { version = "=0.1.0", path = "../crowsi-control-contracts" }
+crowsi-control-contracts = { version = "=0.1.1", path = "../crowsi-control-contracts" }
 crowsi-policy-engine = { version = "=0.1.0", path = "../crowsi-policy-engine" }
 ed25519-dalek = { version = "3.0.0", features = ["zeroize"] }
 p256 = { version = "0.14.0", features = ["ecdsa"] }
