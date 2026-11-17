@@ -17,7 +17,7 @@ hex = "0.4.3"
 base64 = "0.23.1"
 crowsi-control-contracts = { version = "=0.1.1", path = "../crowsi-control-contracts" }
 getrandom = "0.4.3"
-nix = { version = "0.31.3", features = ["user"] }
+nix = { version = "0.32.0", features = ["user"] }
 rusqlite = { version = "0.41.0", features = ["bundled"] }
 serde = { version = "1.0.228", features = ["derive"] }
 sha2 = "0.11.1"
